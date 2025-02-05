@@ -71,3 +71,24 @@ CREATE TABLE sub_food (
 	food_id INT,
 	FOREIGN KEY(food_id) REFERENCES food(food_id)
 )
+
+-- 1. Tìm 5 người đã like nhà hàng nhiều nhất:
+SELECT user_id, COUNT(*) AS like_count
+FROM like_res
+GROUP BY user_id
+ORDER BY like_count DESC
+LIMIT 5;
+
+-- 2. Tìm 2 nhà hàng có lượt like nhiều nhất:
+SELECT res_id, COUNT(*) AS like_count
+FROM like_res
+GROUP BY res_id
+ORDER BY like_count DESC
+LIMIT 2;
+
+-- 3. Tìm người đã đặt hàng nhiều nhất:
+SELECT user_id, COUNT(*) AS order_count
+FROM orders
+GROUP BY user_id
+ORDER BY order_count DESC
+LIMIT 1;
